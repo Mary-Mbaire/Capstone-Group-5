@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { fetchTableData } from '../services/api';
 
 const Table = styled.table`
   width: 100%;
@@ -17,24 +18,42 @@ const Td = styled.td`
   border: 1px solid #ddd;
 `;
 
-const DataTable = () => (
-  <Table>
-    <thead>
-      <tr>
-        <Th>Name</Th>
-        <Th>Age</Th>
-        <Th>Address</Th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <Td>John Doe</Td>
-        <Td>25</Td>
-        <Td>1234 Main St</Td>
-      </tr>
-      {/* More rows... */}
-    </tbody>
-  </Table>
-);
+const DataTable = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetchTableData().then((response) => {
+      const objects = response.data;
+      console.log(objects.length); 
+      localStorage.setItem("allRecords",objects.length);
+      setData(objects);
+    });
+  }, []);
+
+  return (
+    <Table>
+      <thead>
+        <tr>
+          <Th>Product Name </Th>
+          <Th>Quantity</Th>
+          <Th>Price</Th>
+          <Th>Transaction Type</Th>
+          <Th>Transaction Date</Th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map(product => (
+          <tr key={product.id}>
+            <Td>{product.product_name}</Td>
+            <Td>{product.quantity}</Td>
+            <Td>{product.price}</Td>
+            <Td>{product.transaction_type}</Td>
+            <Td>{product.created}</Td>
+          </tr>
+        ))}
+      </tbody>
+    </Table>
+  );
+};
 
 export default DataTable;

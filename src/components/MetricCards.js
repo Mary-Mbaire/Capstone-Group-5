@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { fetchMetrics } from '../services/api';
 
 const CardContainer = styled.div`
   display: flex;
@@ -17,21 +18,35 @@ const Card = styled.div`
   margin: 0 1rem;
 `;
 
-const MetricCards = () => (
-  <CardContainer>
-    <Card>
-      <h3>Users</h3>
-      <p>1,234</p>
-    </Card>
-    <Card>
-      <h3>Sales</h3>
-      <p>$12,345</p>
-    </Card>
-    <Card>
-      <h3>Performance</h3>
-      <p>87%</p>
-    </Card>
-  </CardContainer>
-);
+const MetricCards = () => {
+  const [metrics, setMetrics] = useState({});
+
+  useEffect(() => {
+    fetchMetrics().then((response) => {
+      console.log("ALL SALES "+ localStorage.getItem("allRecords"))
+      var details = {
+        "allCount":localStorage.getItem("allRecords")
+      }
+      setMetrics(details);
+    });
+  }, []);
+
+  return (
+    <CardContainer>
+      <Card>
+        <h3>Total Tranasactions</h3>
+        <p>{metrics.allCount}</p>
+      </Card>
+      <Card>
+        <h3>Stock In</h3>
+        <p>{metrics.id}</p>
+      </Card>
+      <Card>
+        <h3>Stock Out</h3>
+        <p>{metrics.completed ? 'Completed' : 'Pending'}</p>
+      </Card>
+    </CardContainer>
+  );
+};
 
 export default MetricCards;
