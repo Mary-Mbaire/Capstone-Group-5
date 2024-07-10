@@ -25,7 +25,9 @@ const MetricCards = () => {
     fetchMetrics().then((response) => {
       console.log("ALL SALES "+ localStorage.getItem("allRecords"))
       var details = {
-        "allCount":localStorage.getItem("allRecords")
+        "allCount":localStorage.getItem("allCount"),
+        "salesCount":localStorage.getItem("salesCount"),
+        "purchaseCount":localStorage.getItem("purchaseCount"),
       }
       setMetrics(details);
     });
@@ -38,12 +40,12 @@ const MetricCards = () => {
         <p>{metrics.allCount}</p>
       </Card>
       <Card>
-        <h3>Stock In</h3>
-        <p>{metrics.id}</p>
+        <h3>Purchases</h3>
+        <p>{metrics.purchaseCount}</p>
       </Card>
       <Card>
-        <h3>Stock Out</h3>
-        <p>{metrics.completed ? 'Completed' : 'Pending'}</p>
+        <h3>Sales</h3>
+        <p>{metrics.salesCount}</p>
       </Card>
     </CardContainer>
   );

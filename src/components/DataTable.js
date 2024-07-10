@@ -23,11 +23,22 @@ const DataTable = () => {
 
   useEffect(() => {
     fetchTableData().then((response) => {
-      const objects = response.data;
-      console.log(objects.length); 
-      localStorage.setItem("allRecords",objects.length);
-      setData(objects);
+      const stock = response.data;
+
+      console.log("all transactions " + stock.length); 
+
+      const stockIn = stock.filter(product => product.transaction_type === 'purchase');
+      console.log('stock in ' +stockIn.length);
+      
+      const stockOut = stock.filter(product => product.transaction_type === 'sales' ||  product.transaction_type === 'sale');
+      console.log('stock out ' +stockOut.length)
+
+      localStorage.setItem("allCount",stock.length);
+      localStorage.setItem("salesCount",stockOut.length);
+      localStorage.setItem("purchaseCount",stockIn.length);
+      setData(stock);
     });
+
   }, []);
 
   return (

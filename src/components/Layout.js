@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
-  height: 100vh;
+  height: 150vh;
 `;
 
 const Sidebar = styled.div`

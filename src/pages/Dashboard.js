@@ -5,7 +5,7 @@ import MetricCards from '../components/MetricCards';
 
 const Dashboard = () => (
   <div>
-    <h1>Sales Dashboard</h1>
+    <h1>Sales</h1>
     <MetricCards />
     <Chart />
     <DataTable />
