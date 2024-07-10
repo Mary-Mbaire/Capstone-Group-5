@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Nav = styled.nav`
   background: #34495e;
-  padding: 0.5rem;
+  padding: 1rem;
 `;
 
 const NavItem = styled(Link)`
@@ -15,8 +15,7 @@ const NavItem = styled(Link)`
 
 const NavBar = () => (
   <Nav>
-    <NavItem to="/">Home</NavItem>
-    <NavItem to="/dashboard">Dashboard</NavItem>
+  
   </Nav>
 );
 
