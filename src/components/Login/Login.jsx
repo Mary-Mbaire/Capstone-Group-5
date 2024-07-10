@@ -22,7 +22,6 @@ const Login = () => {
                 <div className="submit">Log in</div>
             </div>
 
-
         </div>
     )
 }
