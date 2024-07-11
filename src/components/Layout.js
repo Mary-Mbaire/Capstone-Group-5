@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faChartBar } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Container = styled.div`
   display: flex;
@@ -40,8 +40,8 @@ const Layout = ({ children }) => (
         <NavLink href="/home">
           <Icon><FontAwesomeIcon icon={faHome} /></Icon> Home
         </NavLink>
-        <NavLink href="/dashboard">
-          <Icon><FontAwesomeIcon icon={faChartBar} /></Icon> Dashboard
+        <NavLink href="/">
+          <Icon><FontAwesomeIcon icon={faSignOutAlt} /></Icon> Log Out
         </NavLink>
       </nav>
     </Sidebar>
