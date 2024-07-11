@@ -21,6 +21,7 @@ const Card = styled.div`
 const MetricCards = () => {
   const [metrics, setMetrics] = useState({});
 
+
   useEffect(() => {
     fetchMetrics().then((response) => {
       console.log("ALL SALES "+ localStorage.getItem("allRecords"))

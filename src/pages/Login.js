@@ -12,10 +12,10 @@ const Login = () => {
         setError('');
 
         try {
-            const response = await axios.post('https://retailscope.net/api/v2/accounts/login/', { username, password });
+            const response = await axios.post('https://retailscope.net/api/v2/token/', { username, password });
             // Handle successful login (e.g., save token, redirect, etc.)
-            const { token } = response.data;
-            localStorage.setItem('token', token);
+            const { access } = response.data;
+            localStorage.setItem('token', access);
             localStorage.setItem('isAuthenticated', 'true');
             console.log('Login successful:', response.data);
             // Redirect to dashboard or another page
