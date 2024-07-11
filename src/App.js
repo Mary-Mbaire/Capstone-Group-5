@@ -23,8 +23,10 @@ const App = () => (
         element={
           isAuthenticated() ? (
             <Layout>
-              <Route index element={<Dashboard />} />
-              {/* Add more authenticated routes as needed */}
+              <Routes>
+                <Route index element={<Dashboard />} />
+                {/* Add more authenticated routes as needed */}
+              </Routes>
             </Layout>
           ) : (
             <Navigate to="/login" replace />

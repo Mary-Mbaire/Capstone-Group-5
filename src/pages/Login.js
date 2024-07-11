@@ -16,7 +16,7 @@ const Login = () => {
             // Handle successful login (e.g., save token, redirect, etc.)
             const { token } = response.data;
             localStorage.setItem('token', token);
-            localStorage.setItem('isAuthenticated', true);
+            localStorage.setItem('isAuthenticated', 'true');
             console.log('Login successful:', response.data);
             // Redirect to dashboard or another page
             window.location.href = '/';
