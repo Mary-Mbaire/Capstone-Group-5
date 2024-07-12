@@ -53,8 +53,11 @@ const Icon = styled.span`
       <Sidebar>
         <h2>JIWEKE STORES</h2>
         <nav>
-          <NavLink href="/home">
+          <NavLink href="/">
             <Icon><FontAwesomeIcon icon={faHome} /></Icon> Home
+          </NavLink>
+          <NavLink href="/transactions">
+            <Icon><FontAwesomeIcon icon={faMoneyBill} /></Icon> All Transactions
           </NavLink>
           <NavLink onClick={handleLogout}>
             <Icon><FontAwesomeIcon icon={faSignOutAlt} /></Icon> Log Out

@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Layout from './components/Layout';
 import NavBar from './components/NavBar';
 import Dashboard from './pages/Dashboard';
+import TransactionsReport from './pages/TransactionsReport';
 import Login from './pages/Login';
+import Transactions from './components/Transactions';
 
 
 
@@ -28,7 +30,7 @@ const App = () => (
             <Layout>
               <Routes>
                 <Route index element={<Dashboard />} />
-                {/* <Route exact path="/transactions" component={AllTransactions} />  */}
+                <Route exact path="/transactions" component={Transactions} /> 
                 {/* Add more authenticated routes as needed */}
               </Routes>
             </Layout>

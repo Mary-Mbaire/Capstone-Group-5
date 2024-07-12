@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
 import '../style/TransactionForm.css'; // Import your CSS file for styling
 
 const TransactionForm = ({ closeModal }) => {
@@ -94,31 +95,33 @@ const TransactionForm = ({ closeModal }) => {
 
       const result = await response.json();
       console.log('Transaction submitted:', result);
-      alert('Results: ' + JSON.stringify(result)); // Display the result
-      // Reset form after submission
-      setFormData({ outlet: 'cd29cf6f-215b-4941-80ab-cd0632e4048f', price: '', product: '', transaction_type: 'sale', quantity: '' });
-      closeModal(); // Close the modal after submission
-      window.location.reload(); // Reload the page after submission
+      
+      Swal.fire({
+        title: 'Success!',
+        text: 'Transaction submitted successfully!',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then(() => {
+        // Reset form after submission
+        setFormData({ outlet: 'cd29cf6f-215b-4941-80ab-cd0632e4048f', price: '', product: '', transaction_type: 'sale', quantity: '' });
+        closeModal(); // Close the modal after submission
+        window.location.reload(); // Reload the page after submission
+      });
+
     } catch (error) {
       console.error('Error submitting transaction:', error);
-      alert('Error submitting transaction: ' + error.message);
+      Swal.fire({
+        title: 'Error!',
+        text: 'Error submitting transaction: ' + error.message,
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
     }
   };
 
   return (
     <div className="transaction-form">
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Price:</label>
-          <input
-            type="number"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-            required
-            className="form-control"
-          />
-        </div>
         <div className="form-group">
           <label>Product:</label>
           {loading ? (
@@ -161,6 +164,17 @@ const TransactionForm = ({ closeModal }) => {
             <option value="sale">Sales</option>
             <option value="purchase">Purchases</option>
           </select>
+        </div>
+        <div className="form-group">
+          <label>Price:</label>
+          <input
+            type="number"
+            name="price"
+            value={formData.price}
+            onChange={handleChange}
+            required
+            className="form-control"
+          />
         </div>
         <div className="form-group">
           <label>Quantity:</label>
