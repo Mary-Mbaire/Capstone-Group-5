@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faSignOutAlt, faMoneyBill } from '@fortawesome/free-solid-svg-icons'; // Import faMoneyBill
 import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`

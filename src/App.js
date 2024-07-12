@@ -5,9 +5,12 @@ import NavBar from './components/NavBar';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 
+
+
 const isAuthenticated = () => {
   // Replace with actual authentication logic
   return localStorage.getItem('isAuthenticated') === 'true';
+  
 };
 
 const App = () => (
@@ -25,6 +28,7 @@ const App = () => (
             <Layout>
               <Routes>
                 <Route index element={<Dashboard />} />
+                {/* <Route exact path="/transactions" component={AllTransactions} />  */}
                 {/* Add more authenticated routes as needed */}
               </Routes>
             </Layout>

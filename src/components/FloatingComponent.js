@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FaPlus } from 'react-icons/fa';
+import TransactionForm from '../pages/TransactionForm'; // Import the TransactionForm component
+import '../style/Modal.css'; // Import the CSS file for the modal
 
 const FloatingContainer = styled.div`
   position: fixed;
-  bottom: 200px;
+  bottom: 20px;
   right: 20px;
   background-color: #6200ea;
   color: white;
@@ -19,15 +21,30 @@ const FloatingContainer = styled.div`
 `;
 
 const FloatingComponent = () => {
+  const [showModal, setShowModal] = useState(false);
 
   const handleClick = () => {
-   console.log("helooo world");
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   return (
-    <FloatingContainer onClick={handleClick}>
-      <FaPlus size={24} />
-    </FloatingContainer>
+    <>
+      <FloatingContainer onClick={handleClick}>
+        <FaPlus size={24} />
+      </FloatingContainer>
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={closeModal}>&times;</span>
+            <TransactionForm closeModal={closeModal} />
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
